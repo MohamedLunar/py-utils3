@@ -1,6 +1,6 @@
 # PyUtils3
 - **PyUtils3** is a lightweight python package for utils
-## Features
+# Features
 - **File Tools**: Write and read text or JSON files.
 - **Network Tools**: Check internet connectivity for multiple sites.
 - **Security Tools**: Generate strong passwords and encrypt/decrypt sensitive data.
